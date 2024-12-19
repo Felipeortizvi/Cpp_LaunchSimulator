@@ -8,50 +8,55 @@ class Rocket{
 
     private:
         // Member variables and attributes
-        string name;
-        double mass;
-        double fuelCapacity;
-        double currentFuel;
+        string name;                    // name for rocket
+        double wet_mass;                // wet mass of the rocket [kg]
+        double dry_mass;                // dry mass of the rocket [kg]
+        double average_rocket_thrust;   // average rocket engine thrust [N]
+        double burn_time;               // burn time [s]
+        double rocket_area;             // rocket body frontal area [m^2]. 1.081 dm^2 = 1.081e-2 m^2
+        double rocket_drag_coeff;       // drag coefficient of the rocket [-]
 
     public:
-        // Constructor
-        Rocket(string rocketName, double rocketMass, double fuelCapacity) 
-        : name(rocketName), mass(rocketMass), fuelCapacity(fuelCapacity), currentFuel(currentFuel) {}
+    // Constructor
+    Rocket(
+        string rocket_name,
+        double rocket_wet_mass,
+        double rocket_dry_mass,
+        double rocket_thrust,
+        double rocket_burn_time,
+        double rocket_area_value,
+        double rocket_drag_coefficient) 
+        : name(rocket_name),
+        wet_mass(rocket_wet_mass),
+        dry_mass(rocket_dry_mass),
+        average_rocket_thrust(rocket_thrust),
+        burn_time(rocket_burn_time),
+        rocket_area(rocket_area_value),
+        rocket_drag_coeff(rocket_drag_coefficient) {}
 
-        void burnFuel(double amount) {
-            if (amount <= currentFuel) {
-                currentFuel -= amount;
-                cout << "Burned: " << amount << " units of fuel.\n";
-                cout << "Remaining fuel: "<<currentFuel;
 
-            }
-            else{
-                cout << "Not enough fuel";
-            }
-        }
+    double rocket_mass(double time) const {
+        // Compute the rocket mass based on elapsed time
+        return wet_mass - (wet_mass - dry_mass) * time / burn_time;
+    }
 
-        double calculateThrustToWeightRatio(double thrust) const {
-            double weight = mass * 9.81; // Assuming Earth's Gravity
-            return thrust / weight;
-            
-        }
-        
-        void displayStats() const {
-            cout << "Rocket Name: " << name << endl;
-            cout << "Mass: " << mass << " kg" << endl;
-            cout << "Fuel Capacity: " << fuelCapacity << " units" << endl;
-            cout << "Current Fuel: " << currentFuel << " units" << endl;
-        }
+    double rocket_wet_mass() const {
+        return wet_mass;
+    }
+
 };
 
 
 
 int main() {
-    
-    Rocket rocket1("Aries", 549054, 150000); // Name, mass, and fuel capacity
 
-    rocket1.displayStats();
+    Rocket myRocket("Aries", 500000.0, 200000.0, 7600000.0, 180.0, 1.081e-2, 0.5);
 
+    int time = 90;
+    double mass = myRocket.rocket_mass(time);
+    cout << "\n";
+    cout << "Original mass: " << myRocket.rocket_wet_mass() << " kg\n";
+    cout << "Rocket mass at time " << time << " seconds: " << mass << " kg" << endl;
     return 0;
 
 
