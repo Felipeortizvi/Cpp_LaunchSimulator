@@ -17,22 +17,22 @@ class Rocket{
         double rocket_drag_coeff;       // drag coefficient of the rocket [-]
 
     public:
-    // Constructor
-    Rocket(
-        string rocket_name,
-        double rocket_wet_mass,
-        double rocket_dry_mass,
-        double rocket_thrust,
-        double rocket_burn_time,
-        double rocket_area_value,
-        double rocket_drag_coefficient) 
-        : name(rocket_name),
-        wet_mass(rocket_wet_mass),
-        dry_mass(rocket_dry_mass),
-        average_rocket_thrust(rocket_thrust),
-        burn_time(rocket_burn_time),
-        rocket_area(rocket_area_value),
-        rocket_drag_coeff(rocket_drag_coefficient) {}
+        // Constructor
+        Rocket(
+            string rocket_name,
+            double rocket_wet_mass,
+            double rocket_dry_mass,
+            double rocket_thrust,
+            double rocket_burn_time,
+            double rocket_area_value,
+            double rocket_drag_coefficient) 
+            : name(rocket_name),
+            wet_mass(rocket_wet_mass),
+            dry_mass(rocket_dry_mass),
+            average_rocket_thrust(rocket_thrust),
+            burn_time(rocket_burn_time),
+            rocket_area(rocket_area_value),
+            rocket_drag_coeff(rocket_drag_coefficient) {}
 
 
     double rocket_mass(double time) const {
