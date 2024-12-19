@@ -48,7 +48,7 @@ class Rocket{
 
 int main() {
     
-    Rocket rocket1("Ares", 549054, 150000); // Name, mass, and fuel capacity
+    Rocket rocket1("Aries", 549054, 150000); // Name, mass, and fuel capacity
 
     rocket1.displayStats();
 
