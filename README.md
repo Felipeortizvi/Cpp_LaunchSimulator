@@ -12,3 +12,11 @@ I would like to use unique pointers, and work with different method protection t
 # New Concepts
 Header files
 Compiling c++ files
+
+# How to Compile
+g++ -o LaunchSimulator main.cpp Rocket.cpp Planet.cpp
+
+./LaunchSimulator
+
+Now I would like to know how to do this without having to state all my cpp files, becuase
+this seems too complicated as of now.
