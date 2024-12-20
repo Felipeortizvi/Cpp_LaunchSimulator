@@ -22,7 +22,10 @@ class Rocket {
                double rocket_area_value, double rocket_drag_coefficient);
 
         double rocket_mass(double time) const;
+
         double rocket_wet_mass() const;
+
+        double rocket_drag_i_Direction(double altitude, double velocity, double velcity_i) const;
 
 
 };

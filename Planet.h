@@ -15,7 +15,7 @@ class Planet {
     public:
         Planet(string planet_name, double gravity, double air_density_sea_level);
 
-        double planet_air_density(double altitude);  // Method to calculate air density
+        double planet_air_density(double altitude) const;  // Method to calculate air density
 };
 
 #endif
