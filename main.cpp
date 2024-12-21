@@ -15,5 +15,15 @@ int main() {
     double velocity_i = 150;    // Velocity in the direction of motion [m/s]
 
     cout << myRocket.rocket_mass(time) << " kg after "<< time<< " seconds."<< endl;
+
+    myRocket.rocket_launch_angle(75);
+
+    myRocket.rocket_launch_angle(75);  // Set the launch angle
+
+    cout << "Launch angle in radians: " << myRocket.get_launch_angle() << endl;
+
+    // Call rocket_thrust_x_y to print thrust_x and thrust_y
+    myRocket.rocket_thrust_x_y();
+
     return 0;
 }

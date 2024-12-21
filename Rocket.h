@@ -8,13 +8,14 @@ using namespace std;  // Using the standard namespace
 
 class Rocket {
     private:
-        string name;               // Name for rocket
-        double wet_mass;           // Wet mass of the rocket [kg]
-        double dry_mass;           // Dry mass of the rocket [kg]
-        double average_rocket_thrust; // Average rocket engine thrust [N]
-        double burn_time;          // Burn time [s]
-        double rocket_area;        // Rocket body frontal area [m^2]
-        double rocket_drag_coeff;  // Drag coefficient of the rocket [-]
+        string name;                    // Name for rocket
+        double wet_mass;                // Wet mass of the rocket [kg]
+        double dry_mass;                // Dry mass of the rocket [kg]
+        double average_rocket_thrust;   // Average rocket engine thrust [N]
+        double burn_time;               // Burn time [s]
+        double rocket_area;             // Rocket body frontal area [m^2]
+        double rocket_drag_coeff;       // Drag coefficient of the rocket [-]
+        double launch_angle;            // Launch angle in radians
 
     public:
         Rocket(string rocket_name, double rocket_wet_mass, double rocket_dry_mass, 
@@ -26,6 +27,12 @@ class Rocket {
         double rocket_wet_mass() const;
 
         double rocket_drag_i_Direction(const Planet& planet, double altitude, double velocity, double velcity_i) const;
+
+        void rocket_launch_angle(double launch_angle) ;
+
+        double get_launch_angle() const; 
+
+        void rocket_thrust_x_y() const;
 
 
 };
