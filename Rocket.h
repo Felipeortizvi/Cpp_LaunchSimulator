@@ -2,6 +2,7 @@
 #define ROCKET_H
 
 #include <string>
+#include <vector>
 #include "planet.h"  // Include the Planet class header file
 
 using namespace std;  // Using the standard namespace
@@ -26,13 +27,19 @@ class Rocket {
 
         double rocket_wet_mass() const;
 
-        double rocket_drag_i_Direction(const Planet& planet, double altitude, double velocity, double velcity_i) const;
+        double rocket_drag_i_direction(const Planet& planet, double altitude, double velocity, double velcity_i) const;
 
         void rocket_launch_angle(double launch_angle) ;
 
         double get_launch_angle() const; 
 
-        void rocket_thrust_x_y() const;
+        vector<double> rocket_thrust_x_y() const;
+
+        double get_burn_time() const;
+
+        double get_wet_mass() const;
+
+        double get_dry_mass() const;
 
 
 };

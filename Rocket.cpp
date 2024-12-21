@@ -20,7 +20,7 @@ double Rocket::rocket_wet_mass() const {
     return wet_mass;
 }
 
-double Rocket::rocket_drag_i_Direction(const Planet& planet, double altitude, double velocity, double velcity_i) const {
+double Rocket::rocket_drag_i_direction(const Planet& planet, double altitude, double velocity, double velcity_i) const {
     return -0.5 * rocket_drag_coeff * rocket_area * planet.planet_air_density(altitude) * velocity * velcity_i;
 }
 
@@ -32,13 +32,27 @@ double Rocket::get_launch_angle() const {
     return launch_angle;  // Return the stored launch angle
 }
 
-void Rocket::rocket_thrust_x_y() const {
+vector<double> Rocket::rocket_thrust_x_y() const {
     double thrust_x = average_rocket_thrust * cos(launch_angle);
     double thrust_y = average_rocket_thrust * sin(launch_angle);
     std::cout << launch_angle << std::endl;
     std::cout << thrust_x << std::endl;
     std::cout << thrust_y << std::endl;
 
+    return {thrust_x, thrust_y};
+
     // We can return these values if we need them.
 
+}
+
+double Rocket::get_burn_time() const{
+    return burn_time;
+}
+
+double Rocket::get_dry_mass() const {
+    return dry_mass;
+}
+
+double Rocket::get_wet_mass() const {
+    return wet_mass;
 }
