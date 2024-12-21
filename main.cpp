@@ -1,5 +1,6 @@
 #include "Rocket.h"
 #include "Planet.h"
+#include "Simulation.h"
 #include <iostream>
 
 using namespace std;
@@ -7,7 +8,8 @@ using namespace std;
 int main() {
     // Create a Planet object for Earth
     Planet earth("Earth", 9.81, 1.225);  // Earth's gravity and air density at sea level
-    Rocket myRocket("Aries", 500000.0, 200000.0, 2501.8, 180.0, 1.081e-2, 0.5);
+    Rocket myRocket("Aries", 19.765, 11.269, 2501.8, 6.09, 1.081e-2, 0.51);
+
 
     int time = 60;              // Elapsed time [s]
     double altitude = 10000;    // Altitude in meters
@@ -24,6 +26,10 @@ int main() {
 
     // Call rocket_thrust_x_y to print thrust_x and thrust_y
     myRocket.rocket_thrust_x_y();
+
+    Simulation sim();
+
+
 
     return 0;
 }
