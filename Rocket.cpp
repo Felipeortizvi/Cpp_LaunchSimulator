@@ -17,8 +17,8 @@ double Rocket::rocket_wet_mass() const {
     return wet_mass;
 }
 
-double Rocket::rocket_drag_i_Direction(double altitude, double velocity, double velcity_i) const {
-    return -0.5 * rocket_drag_coeff * rocket_area * Planet::planet_air_density(altitude) * velocity * velcity_i;
+double Rocket::rocket_drag_i_Direction(const Planet& planet, double altitude, double velocity, double velcity_i) const {
+    return -0.5 * rocket_drag_coeff * rocket_area * planet.planet_air_density(altitude) * velocity * velcity_i;
 }
 
 

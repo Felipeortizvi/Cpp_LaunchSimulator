@@ -25,7 +25,7 @@ class Rocket {
 
         double rocket_wet_mass() const;
 
-        double rocket_drag_i_Direction(double altitude, double velocity, double velcity_i) const;
+        double rocket_drag_i_Direction(const Planet& planet, double altitude, double velocity, double velcity_i) const;
 
 
 };
