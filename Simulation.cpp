@@ -4,10 +4,8 @@
 #include <cmath>
 #include <vector>
 
-Simulation::Simulation(double final_time, double time_step, const Rocket& rocket, const Planet& planet) {
-    this->final_time = final_time;
-    this->time_step = time_step;
-    this->rocket = rocket; // Initialize the rocket reference
+Simulation::Simulation(double final_time, double time_step, const Rocket& rocket, const Planet& planet) 
+    : final_time(final_time), time_step(time_step), rocket(rocket), planet(planet) {
 
     // Resize the vectors based on the number of time steps
     int N = static_cast<int>(std::ceil(final_time / time_step));
@@ -72,8 +70,8 @@ void Simulation::runSimulation() {
         double v = std::sqrt(velocity_x[n] * velocity_x[n] + velocity_y[n] * velocity_y[n]);
 
         // Assuming `D_i` is some drag force function
-        double drag_x = D_i(y[n], v, velocity_x[n]);
-        double drag_y = D_i(y[n], v, velocity_y[n]);
+        double drag_x = rocket.rocket_drag_i_direction(planet, y[n], v, velocity_x[n]);
+        double drag_y = rocket.rocket_drag_i_direction(planet, y[n], v, velocity_y[n]);
 
         acceleration_x[n] = drag_x / rocket.get_dry_mass();
         acceleration_y[n] = drag_y / rocket.get_dry_mass() - g;

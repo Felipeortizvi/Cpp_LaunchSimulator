@@ -27,9 +27,6 @@ int main() {
     // Call rocket_thrust_x_y to print thrust_x and thrust_y
     myRocket.rocket_thrust_x_y();
 
-    Simulation sim();
-
-
 
     return 0;
 }
