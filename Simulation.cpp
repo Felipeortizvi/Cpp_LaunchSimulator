@@ -1,7 +1,9 @@
+#define _USE_MATH_DEFINES
 #include "Simulation.h"
 #include "Rocket.h"
 #include "Planet.h"
 #include <cmath>
+#include <algorithm>
 #include <vector>
 
 Simulation::Simulation(double final_time, double time_step, const Rocket& rocket, const Planet& planet) 
@@ -94,4 +96,17 @@ void Simulation::runSimulation() {
     velocity_y.resize(n);
     acceleration_x.resize(n);
     acceleration_y.resize(n);
+}
+
+
+double Simulation::velocity() const{
+    double v_x = velocity_x[0];
+    double v_y = velocity_y[0];
+    return sqrt(pow(v_x, 2) + pow(v_y,2));
+}
+
+
+double Simulation::apogee() const{
+
+
 }

@@ -34,6 +34,12 @@ class Simulation{
         const vector<double>& get_acceleration_x() const { return acceleration_x; }
         const vector<double>& get_acceleration_y() const { return acceleration_y; }
 
+        double velocity() const; 
+
+        double burnout() const;
+
+        double apogee() const; 
+
 
 };
 
