@@ -110,8 +110,8 @@ double Simulation::velocity() const{
 
 
 void Simulation::apogee() const{
-    auto max_it = std::max_element(y.begin(), y.end());
-    int n_a = std::distance(y.begin(), max_it);
+    auto max_it = std::max_element(y.begin(), y.end()); // This is probably wrong
+    int n_a = std::distance(y.begin(), max_it); //This too
 
     cout << n_a << endl;
 
