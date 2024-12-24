@@ -113,9 +113,10 @@ void Simulation::apogee() const{
     auto max_it = std::max_element(y.begin(), y.end());
     int n_a = std::distance(y.begin(), max_it);
 
+    cout << n_a << endl;
+
     cout << "Apogee time: " << time[n_a] << " seconds"<<endl;
     cout << "Altitude: " << y[n_a] << " meters"<<endl;
     cout << "Speed: " << endl;
 }
 
-double Simulation::burnout() const{} //Finish this after. 

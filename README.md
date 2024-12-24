@@ -19,7 +19,7 @@ Header files
 Compiling c++ files
 
 # How to Compile
-g++ -o LaunchSimulator main.cpp Rocket.cpp Planet.cpp
+g++ -o LaunchSimulator main.cpp Rocket.cpp Planet.cpp Simulation.cpp
 
 ./LaunchSimulator
 
