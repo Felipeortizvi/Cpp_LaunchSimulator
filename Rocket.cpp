@@ -42,8 +42,6 @@ vector<double> Rocket::rocket_thrust_x_y() const {
 
     return {thrust_x, thrust_y};
 
-    // We can return these values if we need them.
-
 }
 
 double Rocket::get_burn_time() const{
