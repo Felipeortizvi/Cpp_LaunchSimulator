@@ -18,8 +18,6 @@ int main() {
 
     cout << myRocket.rocket_mass(time) << " kg after "<< time<< " seconds."<< endl;
 
-    myRocket.rocket_launch_angle(75);
-
     myRocket.rocket_launch_angle(75);  // Set the launch angle
 
     cout << "Launch angle in radians: " << myRocket.get_launch_angle() << endl;

@@ -107,6 +107,10 @@ double Simulation::velocity() const{
 
 
 double Simulation::apogee() const{
+    auto max_it = std::max_element(y.begin(), y.end());
+    int n_a = std::distance(y.begin(), max_it);
 
-
+    return n_a;
 }
+
+double Simulation::burnout() const{} //Finish this after. 
