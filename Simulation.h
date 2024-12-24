@@ -50,7 +50,7 @@ class Simulation{
 
         double burnout() const;
 
-        double apogee() const; 
+        void apogee() const; 
 
 
 };
