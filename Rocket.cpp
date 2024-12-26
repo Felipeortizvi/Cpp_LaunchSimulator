@@ -14,6 +14,7 @@ Rocket::Rocket(string rocket_name, double rocket_wet_mass, double rocket_dry_mas
                 launch_angle(0.0) {};      
 
 double Rocket::rocket_mass(double time) const {
+    if (time > burn_time) return dry_mass;
     return wet_mass - (wet_mass - dry_mass) * time / burn_time;
 }
 

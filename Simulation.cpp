@@ -109,14 +109,14 @@ double Simulation::velocity() const{
 }
 
 
-void Simulation::apogee() const{
-    auto max_it = std::max_element(y.begin(), y.end()); // This is probably wrong
-    int n_a = std::distance(y.begin(), max_it); //This too
-
-    cout << n_a << endl;
-
-    cout << "Apogee time: " << time[n_a] << " seconds"<<endl;
-    cout << "Altitude: " << y[n_a] << " meters"<<endl;
-    cout << "Speed: " << endl;
+void Simulation::apogee() const {
+    auto max_it = std::max_element(y.begin(), y.end());
+    if (max_it != y.end()) {
+        int n_a = std::distance(y.begin(), max_it);
+        cout << "Apogee time: " << time[n_a] << " seconds" << endl;
+        cout << "Altitude: " << y[n_a] << " meters" << endl;
+        cout << "Speed: " << sqrt(pow(velocity_x[n_a], 2) + pow(velocity_y[n_a], 2)) << " m/s" << endl;
+    } else {
+        cout << "Apogee could not be determined." << endl;
+    }
 }
-
