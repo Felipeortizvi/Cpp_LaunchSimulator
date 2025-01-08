@@ -1,34 +1,41 @@
-#include "Rocket.h"
-#include "Planet.h"
-#include "Simulation.h"
 #include <iostream>
-
-using namespace std;
+#include "Planet.h"
+#include "Rocket.h"
+#include "Simulation.h"
 
 int main() {
-    // Create a Planet object for Earth
-    Planet earth("Earth", 9.81, 1.225);  // Earth's gravity and air density at sea level
-    Rocket myRocket("Aries", 19.765, 11.269, 2501.8, 6.09, 1.081e-2, 0.51);
+    // 1) Create the planet
+    //    - For Earth: gravity=9.81, air_density_sea_level=1.225
+    Planet earth("Earth", 9.81, 1.225);
 
+    // 2) Create the rocket
+    //    - Must match your Python constants for a direct comparison:
+    //      wet_mass = 19.765 kg
+    //      dry_mass = 11.269 kg
+    //      average thrust = 2501.8 N
+    //      burn_time = 6.09 s
+    //      frontal area = 1.081e-2 m^2
+    //      drag coefficient = 0.51
+    Rocket myRocket("TestRocket", 19.765, 11.269,
+                    2501.8, 6.09,
+                    1.081e-2, 0.51);
 
-    int time = 60;              // Elapsed time [s]
-    double altitude = 10000;    // Altitude in meters
-    double velocity = 250;      // Velocity [m/s]
-    double velocity_i = 150;    // Velocity in the direction of motion [m/s]
+    // 3) Set the rocket's launch angle
+    //    - In your Python: theta_0 = 75 deg
+    myRocket.rocket_launch_angle(75.0);
 
-    cout << myRocket.rocket_mass(time) << " kg after "<< time<< " seconds."<< endl;
-
-    myRocket.rocket_launch_angle(75);  // Set the launch angle
-
-    cout << "Launch angle in radians: " << myRocket.get_launch_angle() << endl;
-
-    // Call rocket_thrust_x_y to print thrust_x and thrust_y
-    myRocket.rocket_thrust_x_y();
-
+    // 4) Create the simulation
+    //    - final_time=180 s, time_step=0.001 s
     Simulation sim(180.0, 0.001, myRocket, earth);
 
+    // 5) Run it!
+    sim.runSimulation();
+
+    // 6) Print out the apogee
     sim.apogee();
 
+    // Optionally, print more info: burnout altitude, final altitude, etc.
+    // That logic is easy to add inside Simulation or inline here.
 
     return 0;
 }

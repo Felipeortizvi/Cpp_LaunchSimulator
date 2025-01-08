@@ -1,58 +1,45 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-
 #include <vector>
-#include <cmath>
 #include "Rocket.h"
 #include "Planet.h"
 
-using namespace std;
+class Simulation {
+private:
+    double final_time;   // e.g. 180.0 s
+    double time_step;    // e.g. 0.001 s
+    const Rocket& rocket;
+    const Planet& planet;
 
-class Simulation{
-    private:
-        double final_time;
-        double time_step;
-        const Rocket& rocket;
-        const Planet& planet;
+    // Data arrays
+    std::vector<double> time;
+    std::vector<double> x;
+    std::vector<double> y;
+    std::vector<double> velocity_x;
+    std::vector<double> velocity_y;
+    std::vector<double> acceleration_x;
+    std::vector<double> acceleration_y;
 
-        vector<double> time, x, y, velocity_x, velocity_y, acceleration_x, acceleration_y;
-        
-    public:
+public:
+    // Constructor
+    Simulation(double final_time, double time_step,
+               const Rocket& rocket, const Planet& planet);
 
-        Simulation(double final_time, double time_step, const Rocket& rocket, const Planet& planet);
+    // Run the Euler integration
+    void runSimulation();
 
-        void runSimulation();
+    // Print out apogee
+    void apogee() const;
 
-        const vector<double>& get_time() const { 
-            return time; 
-        }
-        const vector<double>& get_x() const { 
-            return x; 
-        }
-        const vector<double>& get_y() const { 
-            return y; 
-        }
-        const vector<double>& get_velocity_x() const { 
-            return velocity_x; 
-        }
-        const vector<double>& get_velocity_y() const { 
-            return velocity_y; 
-        }
-        const vector<double>& get_acceleration_x() const { 
-            return acceleration_x; 
-        }
-        const vector<double>& get_acceleration_y() const { 
-            return acceleration_y; 
-        }
-
-        double velocity() const; 
-
-        double burnout() const;
-
-        void apogee() const; 
-
-
+    // (Optional) getters for the data arrays
+    const std::vector<double>& getTime() const { return time; }
+    const std::vector<double>& getX() const { return x; }
+    const std::vector<double>& getY() const { return y; }
+    const std::vector<double>& getVelocityX() const { return velocity_x; }
+    const std::vector<double>& getVelocityY() const { return velocity_y; }
+    const std::vector<double>& getAccelerationX() const { return acceleration_x; }
+    const std::vector<double>& getAccelerationY() const { return acceleration_y; }
 };
 
 #endif

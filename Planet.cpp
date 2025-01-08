@@ -1,18 +1,20 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cmath>
+#include "Planet.h"
+#include <cmath>  // for std::exp
 
-using namespace std;
+Planet::Planet(std::string planet_name, double gravity_val, double air_density_sea_level_val)
+    : name(planet_name),
+      gravity(gravity_val),
+      air_density_sea_level(air_density_sea_level_val)
+{
+}
 
+double Planet::planet_air_density(double altitude) const {
+    // Same scale height as in your Python code
+    const double scale_height = 7700.0;
+    // ρ = ρ0 * exp(-altitude / H)
+    return air_density_sea_level * std::exp(-altitude / scale_height);
+}
 
-#include "planet.h"
-
-Planet::Planet(string planet_name, double gravity, double air_density_sea_level)
-    : name(planet_name), gravity(gravity), air_density_sea_level(air_density_sea_level) {}
-
-double Planet::planet_air_density(double altitude) const{
-    // Air density of planet [kg/m^3]
-    int scale_height = 7700;  // Scale height of Earth's atmosphere
-    return air_density_sea_level * exp(-altitude / scale_height);
+double Planet::getGravity() const {
+    return gravity;
 }
