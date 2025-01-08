@@ -28,14 +28,9 @@ int main() {
     //    - final_time=180 s, time_step=0.001 s
     Simulation sim(180.0, 0.001, myRocket, earth);
 
-    // 5) Run it!
     sim.runSimulation();
 
-    // 6) Print out the apogee
     sim.apogee();
-
-    // Optionally, print more info: burnout altitude, final altitude, etc.
-    // That logic is easy to add inside Simulation or inline here.
 
     return 0;
 }
