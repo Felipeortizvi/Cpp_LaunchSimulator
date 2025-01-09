@@ -17,9 +17,7 @@ Rocket::Rocket(std::string rocket_name,
       burn_time(rocket_burn_time),
       rocket_area(rocket_area_value),
       rocket_drag_coeff(rocket_drag_coefficient),
-      launch_angle(0.0)  // default 0 rad
-{
-}
+      launch_angle(0.0){}
 
 double Rocket::rocket_mass(double time) const {
     // If time is beyond burn time, rocket is at dry mass

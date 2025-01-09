@@ -32,6 +32,9 @@ public:
     // Print out apogee
     void apogee() const;
 
+    void burnout() const;
+
+
     // (Optional) getters for the data arrays
     const std::vector<double>& getTime() const { return time; }
     const std::vector<double>& getX() const { return x; }

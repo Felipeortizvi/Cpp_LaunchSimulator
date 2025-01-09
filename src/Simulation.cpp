@@ -129,3 +129,22 @@ void Simulation::apogee() const {
         std::cout << "No apogee found.\n";
     }
 }
+
+void Simulation::burnout() const {
+    // 1) Retrieve the rocket burn time
+    double burnTime = rocket.get_burn_time();
+
+    auto it = std::min_element(time.begin(), time.end(),
+        [=](double a, double b) {
+            return std::fabs(a - burnTime) < std::fabs(b - burnTime);});
+
+    int n_b = std::distance(time.begin(), it);
+
+    double altitude_burn = y[n_b];
+    double speed_burn = std::sqrt(velocity_x[n_b] * velocity_x[n_b] +
+                                  velocity_y[n_b] * velocity_y[n_b]);
+
+    std::cout << "Burnout time:\t" << time[n_b]      << " s\n"
+              << "... altitude:\t"  << altitude_burn << " m\n"
+              << "... speed:\t"     << speed_burn    << " m/s\n";
+}
