@@ -145,6 +145,6 @@ void Simulation::burnout() const {
                                   velocity_y[n_b] * velocity_y[n_b]);
 
     std::cout << "Burnout time:\t" << time[n_b]      << " s\n"
-              << "... altitude:\t"  << altitude_burn << " m\n"
-              << "... speed:\t"     << speed_burn    << " m/s\n";
+              << "Altitude:\t"  << altitude_burn << " m\n"
+              << "Speed:\t"     << speed_burn    << " m/s\n";
 }

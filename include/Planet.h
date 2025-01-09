@@ -15,6 +15,8 @@ class Planet {
     public:
         Planet(string planet_name, double gravity, double air_density_sea_level);
 
+        friend ostream& operator << (ostream& os, const Planet& planet);
+
         double planet_air_density(double altitude) const;  // Method to calculate air density
 
 

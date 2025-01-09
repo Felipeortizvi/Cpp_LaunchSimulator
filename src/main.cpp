@@ -24,12 +24,22 @@ int main() {
     //    - In your Python: theta_0 = 75 deg
     myRocket.rocket_launch_angle(75.0);
 
-    // 4) Create the simulation
+    // Create the simulation (This is going to be standard, I may make this a constant actually)
     //    - final_time=180 s, time_step=0.001 s
     Simulation sim(180.0, 0.001, myRocket, earth);
 
     sim.runSimulation();
 
+    std::cout<<"===ENVIRONMENT VARIABLES==="<<std::endl;
+
+    std::cout<<myRocket<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<earth<<std::endl;
+    std::cout<<std::endl;
+
+    std::cout<< "====LAUNCH STATISTICS===="<<std::endl;
+    sim.burnout();
+    std::cout<<std::endl;
     sim.apogee();
 
     return 0;

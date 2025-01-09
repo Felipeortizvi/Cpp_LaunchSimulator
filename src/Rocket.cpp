@@ -19,6 +19,15 @@ Rocket::Rocket(std::string rocket_name,
       rocket_drag_coeff(rocket_drag_coefficient),
       launch_angle(0.0){}
 
+std::ostream& operator<<(std::ostream& os, const Rocket& rocket)
+{
+    os << "Rocket: "        << rocket.name <<std::endl
+       << "Mass = "       << rocket.wet_mass << " kg" << std::endl
+       << "Thrust = "     << rocket.average_rocket_thrust << " N" << std::endl
+       << "Burn time = "  << rocket.burn_time << " s";
+    return os;
+}
+
 double Rocket::rocket_mass(double time) const {
     // If time is beyond burn time, rocket is at dry mass
     if (time > burn_time) {

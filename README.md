@@ -19,9 +19,10 @@ Header files
 Compiling c++ files
 
 # How to Compile
-g++ -o LaunchSimulator main.cpp Rocket.cpp Planet.cpp Simulation.cpp
+$ g++ -std=c++17 -I include src/main.cpp src/Planet.cpp src/Rocket.cpp src/Simulation.cpp -o rocketSim.exe
 
-./LaunchSimulator
+./rocketSim.exe
 
 Now I would like to know how to do this without having to state all my cpp files, becuase
 this seems too complicated as of now.
+
