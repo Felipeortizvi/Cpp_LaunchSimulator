@@ -114,7 +114,6 @@ void Simulation::runSimulation() {
 }
 
 void Simulation::apogee() const {
-    // Find the index where y is maximum
     auto it = std::max_element(y.begin(), y.end());
     if (it != y.end()) {
         int idx = static_cast<int>(std::distance(y.begin(), it));
@@ -131,7 +130,6 @@ void Simulation::apogee() const {
 }
 
 void Simulation::burnout() const {
-    // 1) Retrieve the rocket burn time
     double burnTime = rocket.get_burn_time();
 
     auto it = std::min_element(time.begin(), time.end(),

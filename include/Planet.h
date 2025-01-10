@@ -19,7 +19,6 @@ class Planet {
 
         double planet_air_density(double altitude) const;  // Method to calculate air density
 
-
         double getGravity() const;
 };
 

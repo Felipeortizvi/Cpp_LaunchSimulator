@@ -1,10 +1,15 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)  # or higher
+project(RocketSimulation)
 
-project(Cpp_LaunchSimulator VERSION 1.0 LANGUAGES CXX)
-
-# Make c++ 17 standard
+# Use C++17 (or whichever version you prefer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+include_directories(include)
 
+file(GLOB SOURCES
+    "src/*.cpp"
+    "main.cpp"
+)
+
+add_executable(rocketSim ${SOURCES})
