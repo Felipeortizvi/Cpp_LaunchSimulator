@@ -19,10 +19,14 @@ Header files
 Compiling c++ files
 
 # How to Compile
-$ g++ -std=c++17 -I include src/main.cpp src/Planet.cpp src/Rocket.cpp src/Simulation.cpp -o rocketSim.exe
 
-./rocketSim.exe
+`cd Cpp_LaunchSimulator/build`
 
-Now I would like to know how to do this without having to state all my cpp files, becuase
-this seems too complicated as of now.
+`cmake ..`
 
+`cmake --build .`
+
+`./Debug/rocketSim.exe`
+
+
+#### Code by Felipe Villegas
