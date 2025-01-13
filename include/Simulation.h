@@ -22,17 +22,15 @@ private:
     std::vector<double> acceleration_y;
 
 public:
+
+    static const double GRAVITATIONAL_CONSTANT;
+
     // Constructor
     Simulation(double final_time, double time_step,
                const Rocket& rocket, const Planet& planet);
 
     // Run the Euler integration
     void runSimulation();
-
-    // Print out apogee
-    void apogee() const;
-
-    void burnout() const;
 
     const std::vector<double>& getTime() const { return time; }
     const std::vector<double>& getX() const { return x; }
@@ -41,6 +39,12 @@ public:
     const std::vector<double>& getVelocityY() const { return velocity_y; }
     const std::vector<double>& getAccelerationX() const { return acceleration_x; }
     const std::vector<double>& getAccelerationY() const { return acceleration_y; }
+
+    // Methods for rocket logic
+    
+    void apogee() const;
+    void burnout() const;
+    bool didEscapeOrbit() const;
 };
 
 #endif

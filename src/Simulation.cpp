@@ -3,6 +3,9 @@
 #include <algorithm>  // for std::max_element
 #include <iostream>   // for std::cout
 
+// Gravitational Constant for measuring escape speed
+const double Simulation::GRAVITATIONAL_CONSTANT = 6.67430e-11; // m^3 kg^-1 s^-2
+
 Simulation::Simulation(double final_time_val, double time_step_val,
                        const Rocket& rocket_val, const Planet& planet_val)
     : final_time(final_time_val),
@@ -145,4 +148,18 @@ void Simulation::burnout() const {
     std::cout << "Burnout time:\t" << time[n_b]      << " s\n"
               << "Altitude:\t"  << altitude_burn << " m\n"
               << "Speed:\t"     << speed_burn    << " m/s\n";
+}
+
+bool Simulation::didEscapeOrbit() const {
+    double escape_velocity = std::sqrt(2 * GRAVITATIONAL_CONSTANT * planet.getMass() / planet.getRadius());
+
+    for (size_t i = 0; i < y.size(); ++i) {
+        if (y[i] > 0 && velocity_y[i] > 0) { // Rocket is still moving away
+            double current_speed = std::sqrt(velocity_x[i] * velocity_x[i] + velocity_y[i] * velocity_y[i]);
+            if (current_speed >= escape_velocity) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
