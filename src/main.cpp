@@ -5,8 +5,8 @@
 
 int main() {
     // 1) Create the planet
-    //    - For Earth: gravity=9.81, air_density_sea_level=1.225
-    Planet earth("Earth", 9.81, 1.225);
+    //    - For Earth: gravity=9.81, air_density_sea_level=1.225, radius=6371000, mass=5.972
+    Planet earth("Earth", 9.81, 1.225, 6371000, 5.972e24);
 
     // 2) Create the rocket
     //    - Must match your Python constants for a direct comparison:
@@ -41,6 +41,13 @@ int main() {
     sim.burnout();
     std::cout<<std::endl;
     sim.apogee();
+
+    std::cout<<std::endl;
+    if (sim.didEscapeOrbit()) {
+        std::cout << "Congratulations! The rocket escaped the planet's orbit.\n";
+    } else {
+        std::cout << "The rocket failed to escape orbit. Try adjusting your design!\n";
+    }
 
     return 0;
 }
