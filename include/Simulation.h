@@ -44,7 +44,7 @@ public:
     
     void apogee() const;
     void burnout() const;
-    bool didEscapeOrbit() const;
+    void didEscapeOrbit() const;
 };
 
 #endif

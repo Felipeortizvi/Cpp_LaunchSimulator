@@ -4,10 +4,8 @@
 #include "Simulation.h"
 
 int main() {
-    // 1) Create the planet
-    //    - For Earth: gravity=9.81, air_density_sea_level=1.225, radius=6371000, mass=5.972
-    Planet earth("Earth", 9.81, 1.225, 6371000, 5.972e24);
 
+    Planet selected_planet = Planet::selectPlanet();
     // 2) Create the rocket
     //    - Must match your Python constants for a direct comparison:
     //      wet_mass = 19.765 kg
@@ -26,7 +24,7 @@ int main() {
 
     // Create the simulation (This is going to be standard, I may make this a constant actually)
     //    - final_time=180 s, time_step=0.001 s
-    Simulation sim(180.0, 0.001, myRocket, earth);
+    Simulation sim(180.0, 0.001, myRocket, selected_planet);
 
     sim.runSimulation();
 
@@ -34,7 +32,7 @@ int main() {
 
     std::cout<<myRocket<<std::endl;
     std::cout<<std::endl;
-    std::cout<<earth<<std::endl;
+    selected_planet.printDetails();
     std::cout<<std::endl;
 
     std::cout<< "====LAUNCH STATISTICS===="<<std::endl;
@@ -43,11 +41,7 @@ int main() {
     sim.apogee();
 
     std::cout<<std::endl;
-    if (sim.didEscapeOrbit()) {
-        std::cout << "Congratulations! The rocket escaped the planet's orbit.\n";
-    } else {
-        std::cout << "The rocket failed to escape orbit. Try adjusting your design!\n";
-    }
+    sim.didEscapeOrbit();
 
     return 0;
 }

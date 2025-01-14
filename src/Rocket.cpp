@@ -22,9 +22,9 @@ Rocket::Rocket(std::string rocket_name,
 std::ostream& operator<<(std::ostream& os, const Rocket& rocket)
 {
     os << "Rocket: "        << rocket.name <<std::endl
-       << "Mass = "       << rocket.wet_mass << " kg" << std::endl
-       << "Thrust = "     << rocket.average_rocket_thrust << " N" << std::endl
-       << "Burn time = "  << rocket.burn_time << " s";
+       << "  Mass = "       << rocket.wet_mass << " kg" << std::endl
+       << "  Thrust = "     << rocket.average_rocket_thrust << " N" << std::endl
+       << "  Burn time = "  << rocket.burn_time << " s";
     return os;
 }
 

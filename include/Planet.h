@@ -17,12 +17,13 @@ class Planet {
     public:
         Planet(string planet_name, double gravity, double air_density_sea_level, double radius, double mass);
 
-        friend ostream& operator << (ostream& os, const Planet& planet);
-
         double planet_air_density(double altitude) const;
         double getGravity() const;
         double getRadius() const;
         double getMass() const;
+        string getName() const;
+        static Planet selectPlanet();
+        void printDetails() const;
  
 };
 
