@@ -13,12 +13,14 @@ class Planet {
         double air_density_sea_level;   // Air density at sea level
         double radius;                 // Radius of planet [m]
         double mass;
+        double scale_height;
 
     public:
-        Planet(string planet_name, double gravity, double air_density_sea_level, double radius, double mass);
+        Planet(string planet_name, double gravity, double air_density_sea_level, double radius, double mass, double scale_height);
 
         double planet_air_density(double altitude) const;
         double getGravity() const;
+        double getScaleHeight() const;
         double getRadius() const;
         double getMass() const;
         string getName() const;
