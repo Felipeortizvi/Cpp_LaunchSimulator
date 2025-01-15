@@ -150,16 +150,16 @@ void Simulation::burnout() const {
               << "Speed:\t"     << speed_burn    << " m/s\n";
 }
 
-void Simulation::didEscapeOrbit() const {
+bool Simulation::didEscapeOrbit() const {
     double escape_velocity = std::sqrt(2 * GRAVITATIONAL_CONSTANT * planet.getMass() / planet.getRadius());
 
     for (size_t i = 0; i < y.size(); ++i) {
         if (y[i] > 0 && velocity_y[i] > 0) { // Rocket is still moving away
             double current_speed = std::sqrt(velocity_x[i] * velocity_x[i] + velocity_y[i] * velocity_y[i]);
             if (current_speed >= escape_velocity) {
-                std::cout<<"Congratulations! The rocket escaped the planet's orbit.\n";
+                return true;
             }
         }
     }
-    std::cout<<"The rocket failed to escape orbit. Try adjusting your design!\n";
+    return false;
 }
