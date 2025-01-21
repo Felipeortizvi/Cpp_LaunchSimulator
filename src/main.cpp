@@ -26,7 +26,7 @@ int main() {
 
     // 3) Set the rocket's launch angle
     //    - In your Python: theta_0 = 75 deg
-    starship.rocket_launch_angle(75.0);
+    starship.set_launch_angle();
 
     // Create the simulation (This is going to be standard, I may make this a constant actually)
     //    - final_time=180 s, time_step=0.001 s

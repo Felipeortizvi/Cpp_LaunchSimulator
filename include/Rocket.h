@@ -32,9 +32,9 @@ class Rocket {
 
         double rocket_drag_i_direction(const Planet& planet, double altitude, double velocity, double velcity_i) const;
 
-        void rocket_launch_angle(double launch_angle) ;
+        void set_launch_angle() ;
 
-        double get_launch_angle() const; 
+        double get_launch_angle() const;
 
         vector<double> rocket_thrust_x_y() const;
 

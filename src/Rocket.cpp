@@ -51,8 +51,11 @@ double Rocket::rocket_drag_i_direction(const Planet& planet,
                  * velocity * velocity_i;
 }
 
-void Rocket::rocket_launch_angle(double angle_degrees) {
+void Rocket::set_launch_angle() {
     // convert degrees -> radians
+    double angle_degrees;
+    std::cout<<"Set your launch angle in Degrees (recommended value is 75-90): ";
+    std::cin>>angle_degrees;
     launch_angle = angle_degrees * M_PI / 180.0;
 }
 
