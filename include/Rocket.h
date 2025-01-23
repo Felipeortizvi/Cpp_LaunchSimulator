@@ -24,7 +24,9 @@ class Rocket {
                double rocket_thrust, double rocket_burn_time, 
                double rocket_area_value, double rocket_drag_coefficient);
         
-        friend std::ostream& operator<<(std::ostream& os, const Rocket& rocket);
+        void printRocketDetails() const;
+
+        static Rocket selectPresetRocket;
 
         double rocket_mass(double time) const;
 

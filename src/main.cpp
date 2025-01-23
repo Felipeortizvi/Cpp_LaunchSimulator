@@ -22,11 +22,40 @@ int main() {
     Rocket starship("Starship", 1000000.0, 100000.0, 30000000.0, 250.0, 18.0, 0.2); // Fake variables
 
 
-    Rocket& selected_rocket = starship; // We are creating a reference
+    Rocket mediumEscapeRocket(
+        "MediumEscapeRocket",
+        /* wet_mass    */ 5000.0,     // 5 tonnes
+        /* dry_mass    */ 500.0,      // 0.5 tonnes
+        /* thrust      */ 500000.0,   // 500 kN
+        /* burn_time   */ 180.0,      // 180 seconds
+        /* frontalArea */ 1.0,        // 1 m^2
+        /* Cd          */ 0.3         // drag coefficient
+    );
+
+    Rocket highThrustEscape(
+    "HighThrustEscape",
+    /* wet_mass    */ 100000.0,    // 100 tonnes
+    /* dry_mass    */ 10000.0,     // 10 tonnes
+    /* thrust      */ 1.0e7,       // 10,000,000 N (10 MN)
+    /* burn_time   */ 180.0,       // 180 seconds
+    /* frontalArea */ 3.0,         // 3 m^2
+    /* Cd          */ 0.15         // drag coefficient
+    );
+
+    Rocket extremeEscape(
+        "ExtremeEscape",
+        /* wet_mass    */ 80000.0,     // 80 tonnes
+        /* dry_mass    */ 5000.0,      // 5 tonnes (mass ratio = 16:1)
+        /* thrust      */ 2.0e7,       // 20,000,000 N (20 MN)
+        /* burn_time   */ 120.0,       // 120 seconds
+        /* frontalArea */ 2.0,         // 2 m^2 cross-section
+        /* Cd          */ 0.1          // very low drag coefficient
+    );
+    Rocket& selected_rocket = bigEscapeRocket; // We are creating a reference
 
     // 3) Set the rocket's launch angle
     //    - In your Python: theta_0 = 75 deg
-    starship.set_launch_angle();
+    selected_rocket.set_launch_angle();
 
     // Create the simulation (This is going to be standard, I may make this a constant actually)
     //    - final_time=180 s, time_step=0.001 s

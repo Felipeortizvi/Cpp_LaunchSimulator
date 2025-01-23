@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES
 #include "Rocket.h"
+#include <vector>
 #include <cmath>     // for std::cos, std::sin
 #include <iostream>  // optional for debugging
 
@@ -19,13 +20,24 @@ Rocket::Rocket(std::string rocket_name,
       rocket_drag_coeff(rocket_drag_coefficient),
       launch_angle(0.0){}
 
-std::ostream& operator<<(std::ostream& os, const Rocket& rocket)
-{
-    os << "Rocket: "        << rocket.name <<std::endl
-       << "  Mass = "       << rocket.wet_mass << " kg" << std::endl
-       << "  Thrust = "     << rocket.average_rocket_thrust << " N" << std::endl
-       << "  Burn time = "  << rocket.burn_time << " s";
-    return os;
+void Rocket::printRocketDetails() const {
+    std::cout << "Rocket: " << name <<"\n"
+                << " Wet Mass: " << wet_mass << " kg"
+                << " Dry Mass: " << dry_mass << " kg"
+                << "Thrust (avg):           " << average_rocket_thrust << " N\n"
+                << "Burn Time:              " << burn_time << " s\n"
+                << "Cross-sectional Area:   " << rocket_area << " m^2\n"
+                << "Drag Coefficient:       " << rocket_drag_coeff << "\n";
+}
+
+static std::vector<Rocket> selectPresetRocket() {
+    // Build a list of lumps
+    return {
+        Rocket("Saturn V (lumped)", 2'800'000.0, 130'000.0, 3.5e7, 700.0, 80.0, 0.2),
+        Rocket("Space Shuttle (lumped)", 2'000'000.0, 120'000.0, 3.0e7, 510.0, 55.0, 0.3),
+        Rocket("Falcon Heavy (lumped)", 1'420'000.0, 80'000.0, 2.3e7, 600.0, 30.0, 0.3),
+        Rocket("SLS Block 1 (lumped)", 2'600'000.0, 130'000.0, 3.5e7, 700.0, 55.0, 0.25)
+    };
 }
 
 double Rocket::rocket_mass(double time) const {
