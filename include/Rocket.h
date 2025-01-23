@@ -26,11 +26,14 @@ class Rocket {
         
         void printRocketDetails() const;
 
-        static Rocket selectPresetRocket;
+        //static Rocket selectPresetRocket;
+        static Rocket selectRocket();
 
         double rocket_mass(double time) const;
 
         double rocket_wet_mass() const;
+
+        string getName() const;
 
         double rocket_drag_i_direction(const Planet& planet, double altitude, double velocity, double velcity_i) const;
 

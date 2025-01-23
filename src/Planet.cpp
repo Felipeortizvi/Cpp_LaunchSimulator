@@ -59,7 +59,6 @@ double Planet::getMass() const {
 
 
 Planet Planet::selectPlanet(){
-    std::cout << "Welcome to the Planet Selector!\n";
     std::cout << "Choose a planet:\n";
 
     // Retrieve the predefined planets

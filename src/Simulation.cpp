@@ -5,16 +5,14 @@
 
 // Gravitational Constant for measuring escape speed
 const double Simulation::GRAVITATIONAL_CONSTANT = 6.67430e-11; // m^3 kg^-1 s^-2
+const double Simulation::TIME_STEP = 0.001;
 
-Simulation::Simulation(double final_time_val, double time_step_val,
-                       const Rocket& rocket_val, const Planet& planet_val)
-    : final_time(final_time_val),
-      time_step(time_step_val),
-      rocket(rocket_val),
-      planet(planet_val)
+Simulation::Simulation(const Rocket& rocket_val, const Planet& planet_val)
+    : rocket(rocket_val), planet(planet_val)
 {
-    // Pre-allocate arrays to hold data up to final_time / time_step
-    int N = static_cast<int>(std::ceil(final_time / time_step));
+    const double FINAL_TIME = rocket_val.get_burn_time() * 3;
+    // Pre-allocate arrays to hold data up to FINAL_TIME / TIME_STEP
+    int N = static_cast<int>(std::ceil(FINAL_TIME / TIME_STEP));
     time.resize(N);
     x.resize(N);
     y.resize(N);
@@ -27,7 +25,7 @@ Simulation::Simulation(double final_time_val, double time_step_val,
 void Simulation::runSimulation() {
     // Initialize the time array
     for (int i = 0; i < (int)time.size(); i++) {
-        time[i] = i * time_step;
+        time[i] = i * TIME_STEP;
     }
 
     // Initial conditions
@@ -69,12 +67,12 @@ void Simulation::runSimulation() {
         acceleration_y[n] = (thrust_y + drag_y) / current_mass - g;
 
         // Euler step for position
-        x[n + 1] = x[n] + velocity_x[n] * time_step;
-        y[n + 1] = y[n] + velocity_y[n] * time_step;
+        x[n + 1] = x[n] + velocity_x[n] * TIME_STEP;
+        y[n + 1] = y[n] + velocity_y[n] * TIME_STEP;
 
         // Euler step for velocity
-        velocity_x[n + 1] = velocity_x[n] + acceleration_x[n] * time_step;
-        velocity_y[n + 1] = velocity_y[n] + acceleration_y[n] * time_step;
+        velocity_x[n + 1] = velocity_x[n] + acceleration_x[n] * TIME_STEP;
+        velocity_y[n + 1] = velocity_y[n] + acceleration_y[n] * TIME_STEP;
 
         n++;
     }
@@ -96,12 +94,12 @@ void Simulation::runSimulation() {
         acceleration_y[n] = drag_y / current_mass - g;
 
         // Euler step for position
-        x[n + 1] = x[n] + velocity_x[n] * time_step;
-        y[n + 1] = y[n] + velocity_y[n] * time_step;
+        x[n + 1] = x[n] + velocity_x[n] * TIME_STEP;
+        y[n + 1] = y[n] + velocity_y[n] * TIME_STEP;
 
         // Euler step for velocity
-        velocity_x[n + 1] = velocity_x[n] + acceleration_x[n] * time_step;
-        velocity_y[n + 1] = velocity_y[n] + acceleration_y[n] * time_step;
+        velocity_x[n + 1] = velocity_x[n] + acceleration_x[n] * TIME_STEP;
+        velocity_y[n + 1] = velocity_y[n] + acceleration_y[n] * TIME_STEP;
 
         n++;
     }

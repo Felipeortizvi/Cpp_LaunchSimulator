@@ -22,21 +22,25 @@ Rocket::Rocket(std::string rocket_name,
 
 void Rocket::printRocketDetails() const {
     std::cout << "Rocket: " << name <<"\n"
-                << " Wet Mass: " << wet_mass << " kg"
-                << " Dry Mass: " << dry_mass << " kg"
-                << "Thrust (avg):           " << average_rocket_thrust << " N\n"
-                << "Burn Time:              " << burn_time << " s\n"
-                << "Cross-sectional Area:   " << rocket_area << " m^2\n"
-                << "Drag Coefficient:       " << rocket_drag_coeff << "\n";
+                << " Wet Mass: " << wet_mass << " kg\n"
+                << " Dry Mass: " << dry_mass << " kg\n"
+                << " Thrust (avg):           " << average_rocket_thrust << " N\n"
+                << " Burn Time:              " << burn_time << " s\n"
+                << " Cross-sectional Area:   " << rocket_area << " m^2\n"
+                << " Drag Coefficient:       " << rocket_drag_coeff << "\n";
 }
 
-static std::vector<Rocket> selectPresetRocket() {
+static std::vector<Rocket> predefinedRockets() {
     // Build a list of lumps
     return {
         Rocket("Saturn V (lumped)", 2'800'000.0, 130'000.0, 3.5e7, 700.0, 80.0, 0.2),
         Rocket("Space Shuttle (lumped)", 2'000'000.0, 120'000.0, 3.0e7, 510.0, 55.0, 0.3),
         Rocket("Falcon Heavy (lumped)", 1'420'000.0, 80'000.0, 2.3e7, 600.0, 30.0, 0.3),
-        Rocket("SLS Block 1 (lumped)", 2'600'000.0, 130'000.0, 3.5e7, 700.0, 55.0, 0.25)
+        Rocket("SLS Block 1 (lumped)", 2'600'000.0, 130'000.0, 3.5e7, 700.0, 55.0, 0.25),
+        Rocket("MediumEscapeRocket", 5000.0, 500.0, 500000.0, 180.0, 1.0, 0.3),
+        Rocket("HighThrustEscape", 100000.0, 10000.0, 1.0e7, 180.0, 3.0, 0.15),
+        Rocket("ExtremeEscape", 80000.0, 5000.0, 2.0e7, 120.0, 2.0, 0.1),
+        Rocket("ESA Rocket", 19.765, 11.269, 2501.8, 6.09, 1.081e-2, 0.51)
     };
 }
 
@@ -75,6 +79,10 @@ double Rocket::get_launch_angle() const {
     return launch_angle; // in radians
 }
 
+string Rocket::getName() const {
+    return name;
+}
+
 std::vector<double> Rocket::rocket_thrust_x_y() const {
     // Thrust in x, y directions
     double thrust_x = average_rocket_thrust * std::cos(launch_angle);
@@ -92,4 +100,62 @@ double Rocket::get_dry_mass() const {
 
 double Rocket::get_wet_mass() const {
     return wet_mass; 
+}
+
+Rocket Rocket::selectRocket() {
+    // Present the predefined rocket choices
+    std::cout << "Choose a Rocket:\n";
+
+    // Retrieve the predefined rocket list
+    std::vector<Rocket> rockets = predefinedRockets();
+
+    // Display them with indices
+    for (size_t i = 0; i < rockets.size(); ++i) {
+        std::cout << i + 1 << ") " << rockets[i].getName() << "\n";
+    }
+    std::cout << rockets.size() + 1 << ") Create your own Rocket\n";
+
+    // Get the user's choice
+    int choice;
+    std::cin >> choice;
+
+    if (choice >= 1 && choice <= (int)rockets.size()) {
+        // Return the selected predefined rocket
+        return rockets[choice - 1];
+    } 
+    else if (choice == (int)rockets.size() + 1) {
+        // Create a custom rocket
+        std::string name;
+        double wet_mass, dry_mass, thrust, burn_time, area, drag_coeff;
+
+        std::cout << "Enter rocket name: ";
+        std::cin >> name;
+
+        std::cout << "Enter wet mass (kg): ";
+        std::cin >> wet_mass;
+
+        std::cout << "Enter dry mass (kg): ";
+        std::cin >> dry_mass;
+
+        std::cout << "Enter average thrust (N): ";
+        std::cin >> thrust;
+
+        std::cout << "Enter burn time (s): ";
+        std::cin >> burn_time;
+
+        std::cout << "Enter cross-sectional area (m^2): ";
+        std::cin >> area;
+
+        std::cout << "Enter drag coefficient (dimensionless): ";
+        std::cin >> drag_coeff;
+
+        // Build and return a new Rocket with the user inputs
+        return Rocket(name, wet_mass, dry_mass, thrust, burn_time, area, drag_coeff);
+    } 
+    else {
+        // Invalid choice: default to the first rocket or handle error
+        std::cerr << "Invalid choice. Defaulting to \"" 
+                  << rockets[0].getName() << "\".\n";
+        return rockets[0];
+    }
 }

@@ -24,10 +24,11 @@ private:
 public:
 
     static const double GRAVITATIONAL_CONSTANT;
+    static const double FINAL_TIME;
+    static const double TIME_STEP;
 
     // Constructor
-    Simulation(double final_time, double time_step,
-               const Rocket& rocket, const Planet& planet);
+    Simulation(const Rocket& rocket, const Planet& planet);
 
     // Run the Euler integration
     void runSimulation();
