@@ -31,7 +31,6 @@ void Rocket::printRocketDetails() const {
 }
 
 static std::vector<Rocket> predefinedRockets() {
-    // Build a list of lumps
     return {
         Rocket("Saturn V (lumped)", 2'800'000.0, 130'000.0, 3.5e7, 700.0, 80.0, 0.2),
         Rocket("Space Shuttle (lumped)", 2'000'000.0, 120'000.0, 3.0e7, 510.0, 55.0, 0.3),
