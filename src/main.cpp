@@ -11,19 +11,13 @@ int main() {
     std::cout<<std::endl;
     Rocket selected_rocket = Rocket::selectRocket();
  
-    // Set the rocket's launch angle
-    //    - In your Python: theta_0 = 75 deg
     selected_rocket.set_launch_angle();
 
-    // Create the simulation (This is going to be standard, I may make this a constant actually)
-    //    - final_time=180 s, time_step=0.001 s
     Simulation sim(selected_rocket, selected_planet);
 
     sim.runSimulation();
 
     std::cout<<"\n===ENVIRONMENT VARIABLES==="<<std::endl;
-
-    std::cout<<std::endl;
     selected_planet.printDetails();
     std::cout<<std::endl;
     selected_rocket.printRocketDetails();
