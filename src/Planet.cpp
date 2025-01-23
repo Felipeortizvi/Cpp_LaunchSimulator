@@ -24,11 +24,11 @@ static std::vector<Planet> predefinedPlanets() {
 
 void Planet::printDetails() const {
     std::cout << "Planet: " << name << "\n"
-                << "  Gravity: " << gravity << " m/s^2\n"
+                << "  Gravity:                  " << gravity << " m/s^2\n"
                 << "  Air Density at Sea Level: " << air_density_sea_level << " kg/m^3\n"
-                << "  Radius: " << radius << " m\n"
-                << "  Mass: " << mass << " kg\n"
-                << "  Scale height: " << scale_height << " m\n";
+                << "  Radius:                   " << radius << " m\n"
+                << "  Mass:                     " << mass << " kg\n"
+                << "  Scale height:             " << scale_height << " m\n";
 }
 
 

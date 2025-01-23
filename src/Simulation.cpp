@@ -122,9 +122,9 @@ void Simulation::apogee() const {
         double vy = velocity_y[idx];
         double speed = std::sqrt(vx*vx + vy*vy);
 
-        std::cout << "Apogee time: " << time[idx] << " s\n";
-        std::cout << "Altitude: " << y[idx] << " m\n";
-        std::cout << "Speed: " << speed << " m/s\n";
+        std::cout << "Apogee time:\t" << time[idx] << " s\n";
+        std::cout << "Altitude:\t" << y[idx] << " m\n";
+        std::cout << "Speed:    \t" << speed << " m/s\n";
     } else {
         std::cout << "No apogee found.\n";
     }
@@ -145,7 +145,7 @@ void Simulation::burnout() const {
 
     std::cout << "Burnout time:\t" << time[n_b]      << " s\n"
               << "Altitude:\t"  << altitude_burn << " m\n"
-              << "Speed:\t"     << speed_burn    << " m/s\n";
+              << "Speed:    \t"     << speed_burn    << " m/s\n";
 }
 
 bool Simulation::didEscapeOrbit() const {

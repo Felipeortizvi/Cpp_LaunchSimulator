@@ -21,9 +21,9 @@ Rocket::Rocket(std::string rocket_name,
       launch_angle(0.0){}
 
 void Rocket::printRocketDetails() const {
-    std::cout << "Rocket: " << name <<"\n"
-                << " Wet Mass: " << wet_mass << " kg\n"
-                << " Dry Mass: " << dry_mass << " kg\n"
+    std::cout   << "Rocket: " << name <<"\n"
+                << " Wet Mass:               " << wet_mass << " kg\n"
+                << " Dry Mass:               " << dry_mass << " kg\n"
                 << " Thrust (avg):           " << average_rocket_thrust << " N\n"
                 << " Burn Time:              " << burn_time << " s\n"
                 << " Cross-sectional Area:   " << rocket_area << " m^2\n"
