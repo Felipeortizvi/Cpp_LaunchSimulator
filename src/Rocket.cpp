@@ -36,9 +36,6 @@ static std::vector<Rocket> predefinedRockets() {
         Rocket("Space Shuttle (lumped)", 2'000'000.0, 120'000.0, 3.0e7, 510.0, 55.0, 0.3),
         Rocket("Falcon Heavy (lumped)", 1'420'000.0, 80'000.0, 2.3e7, 600.0, 30.0, 0.3),
         Rocket("SLS Block 1 (lumped)", 2'600'000.0, 130'000.0, 3.5e7, 700.0, 55.0, 0.25),
-        Rocket("MediumEscapeRocket", 5000.0, 500.0, 500000.0, 180.0, 1.0, 0.3),
-        Rocket("HighThrustEscape", 100000.0, 10000.0, 1.0e7, 180.0, 3.0, 0.15),
-        Rocket("ExtremeEscape", 80000.0, 5000.0, 2.0e7, 120.0, 2.0, 0.1),
         Rocket("ESA Rocket", 19.765, 11.269, 2501.8, 6.09, 1.081e-2, 0.51)
     };
 }
