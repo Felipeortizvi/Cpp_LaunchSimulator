@@ -3,6 +3,10 @@
 This will be a C++ project which will allow me to simulate a rocket launch with different variables and will 
 determine if you successfully made it out of different orbits of different planets.
 
+# Simulation Sample
+
+![Launch Simulation](images/sim_launch.png)
+
 # Inputs I would like from user
 I want to let the user put the burn time of the rocket, launch angle, scale height, drag coefficient of the rocket.
 
